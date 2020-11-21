@@ -1,0 +1,67 @@
+﻿@model Parcial4_IvanMendoza.Models.DATOS
+@{
+    ViewBag.Title = "CalculoPrecio";
+}
+
+<h2>Calculo del Precio</h2>
+
+<h2>Alumno: <strong>IVAN ALESSANDRO MENDOZA LANDAVERDE</strong></h2>
+<h2>Carnet: <strong>25-0288-2019</strong></h2>
+<h2>Ejericios realizados: <strong>Ejercicios pares (2,4,6)</strong></h2>
+
+<h4>
+    @Html.ActionLink("Calcular nota de estudiante", "Index")
+    @Html.ActionLink("Calcular compra final", "CalculoCompra")
+    @Html.ActionLink("Calcular compra final con lambda", "CalculoPrecio")
+</h4><br />
+<h3>Se realizara un descuento por:</h3>
+<ul>
+    <li>Por compras entre 10000 y 20000 el 10%</li>
+    <li>) Por compras entre 20001 y 50000 el 30%</li>
+    <li>Por compras superiores a 50000 el 50%</li>
+</ul>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <form action="">
+        <br />
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.cantArticulos, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.cantArticulos, new
+       {
+           @class = "form-control",
+           type
+   = "number"
+       })
+        </div>
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.valorUnitario, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.valorUnitario, new
+       {
+           @class = "form-control",
+           type
+   = "number"
+       })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </form>
+    <br /><br />
+    if (ViewBag.final != null)
+    {
+        <h2>DATOS FINALES</h2><br />
+        <p>Cantidad de productos: &nbsp;@ViewBag.cantidad</p>
+        <p>Precio Unitario: $&nbsp;@ViewBag.precio</p>
+        <p>Total de la compra: &nbsp;@ViewBag.total</p>
+        <p>Descuento: $&nbsp;@ViewBag.descuento  &nbsp;@ViewBag.mensaje</p>
+        <p>Total final: $&nbsp;@ViewBag.final</p>
+    }
+}
+
+e

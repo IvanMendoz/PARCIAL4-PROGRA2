@@ -1,0 +1,104 @@
+﻿@model Parcial4_IvanMendoza.Models.DATOS
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Calcular nota de Estudiante</h2>
+
+<h2>Alumno: <strong>IVAN ALESSANDRO MENDOZA LANDAVERDE</strong></h2>
+<h2>Carnet: <strong>25-0288-2019</strong></h2>
+<h2>Ejericios realizados: <strong>Ejercicios pares (2,4,6)</strong></h2>
+
+    <h4>
+        @Html.ActionLink("Calcular nota de estudiante", "Index")
+        @Html.ActionLink("Calcular compra final", "CalculoCompra")
+        @Html.ActionLink("Calcular compra final con lambda", "CalculoPrecio")
+    </h4><br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <form action="">
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.codEstudiante, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.codEstudiante, new
+   {
+       @class = "form-control",
+       type
+   = "number"
+   })
+        </div>
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.nomEstudiante, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.nomEstudiante, new
+   {
+       @class = "form-control",
+       type
+   = "text"
+   })
+        </div>
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.nomMateria, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.nomMateria, new
+   {
+       @class = "form-control",
+       type
+   = "text"
+   })
+        </div>
+        <br />
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.nota1, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.nota1, new
+   {
+       @class = "form-control",
+       type
+   = "number"
+   })
+        </div>
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.nota2, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.nota2, new
+   {
+       @class = "form-control",
+       type
+   = "number"
+   })
+        </div>
+
+        <div class="form-group" style="background:#a9f7e9; padding:10px; width:30%; display:inline-block;">
+            @Html.LabelFor(Model => Model.nota3, new { @class = "control-label" })
+            @Html.TextBoxFor(Model => Model.nota3, new
+   {
+       @class = "form-control",
+       type
+   = "number"
+   })
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </form>
+    <br /><br />
+    if (ViewBag.resultado != null)
+    {
+        <h2>DATOS</h2><br />
+        <p>Codigo del estudiante: &nbsp;@ViewBag.codEstu</p>
+        <p>Nombre del estudiante: &nbsp;@ViewBag.nomEstu</p>
+        <p>Nombre de la materia: &nbsp;@ViewBag.nomMate</p>
+        <p>Nota obtenida: &nbsp;@ViewBag.resultado</p>
+        <p>&nbsp;@ViewBag.mensaje</p>
+    }
+}
+
+
+
+
